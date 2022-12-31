@@ -28,4 +28,18 @@ public class BasePage {
                 ).setFullPage(true)
         );
     }
+
+
+
+
+    protected int convertStringToInt(String strValue) {
+        Integer number = null;
+        try {
+            number = Integer.valueOf(strValue);
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        return number;
+    }
+
 }

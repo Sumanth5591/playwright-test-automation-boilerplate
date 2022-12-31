@@ -10,6 +10,8 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 
+import java.util.HashMap;
+
 /**
  * @author tahanima
  */
@@ -17,7 +19,8 @@ import org.testng.annotations.Listeners;
 public abstract class BaseTest {
     private final Playwright playwright = Playwright.create();
     private final Browser browser = BrowserManager.browser(playwright);
-    private final Page page = browser.newPage();
+    protected final Page page = browser.newPage();
+    public HashMap<String,String> shareSteps = new HashMap<>();
 
     public abstract void initialize();
 
@@ -34,4 +37,16 @@ public abstract class BaseTest {
     public void teardown() {
         playwright.close();
     }
+
+    protected int convertStringToInt(String strValue) {
+        Integer number = null;
+        try {
+            number = Integer.valueOf(strValue);
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+        }
+        return number;
+    }
+
+
 }

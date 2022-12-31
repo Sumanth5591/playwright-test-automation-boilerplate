@@ -26,6 +26,7 @@ public interface Configuration extends Config {
      * @return a boolean containing the choice
      * whether the browser will run in headless mode
      */
+    @Key("headless")
     Boolean headless();
 
     /**
